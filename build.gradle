@@ -1,0 +1,52 @@
+
+buildscript{
+    //  전역변수 설정 영역
+    ext {
+        springBootVersion = '2.7.18'
+    }
+    repositories{
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.18'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.self.book'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    /**
+     * compile -> implementation
+     * testCompile -> testImplementation
+     * runtime -> runtimeOnly
+     * testCompile -> testImplementation
+     */
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    // lombok 추가
+    implementation('org.projectlombok:lombok')
+
+    // spring data JPA 추상화 라이브러리
+    // spring boot 버전에 맞춰 자동으로 jpa관련 라이브러리들의 버전을 관리해 준다.
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // 인메모리 관계형 데이터 베이스
+    // 메모리에서 시작되기에 애플리케이션을 재시작할 떄마다 `초기화`, 테스트 용도로 많이 사용
+    implementation('com.h2database:h2')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
