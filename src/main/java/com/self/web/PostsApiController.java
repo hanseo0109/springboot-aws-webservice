@@ -1,6 +1,5 @@
 package com.self.web;
 
-import com.self.domain.posts.Posts;
 import com.self.service.posts.PostsService;
 import com.self.web.dto.PostsResponseDto;
 import com.self.web.dto.PostsSaveRequestDto;

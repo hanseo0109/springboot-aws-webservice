@@ -37,7 +37,6 @@ public class PostsService {
                 postsUpdateRequestDto.getTitle()
                 , postsUpdateRequestDto.getContent()
         );
-
         return id;
     }
 

@@ -6,7 +6,6 @@ import lombok.Getter;
 /*
 Posts Entiy의 필드 중 일부만 사용
 */
-
 @Getter
 public class PostsResponseDto {
     private Long id;

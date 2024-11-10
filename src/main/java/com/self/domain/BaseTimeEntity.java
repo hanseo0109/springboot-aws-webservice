@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 /**
  * 해당 클래스를 상속받으면 `입력날짜` 및 `수정날짜`가 자동으로 입력된다.
  */
-
 @Getter
 // JPA Entity 클래스들이 해당 클래스를 상속할 경우 필드들로 칼람으로 인식하도록 하는 역할
 @MappedSuperclass

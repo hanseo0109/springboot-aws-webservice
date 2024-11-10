@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-// lombok annotation
+// 기본 생성자 자동 추가
 @Getter
-@NoArgsConstructor      // 기본 생성자 자동 추가
+@NoArgsConstructor
 // jpa require annotation
 @Entity     // 테이블과 링크될 클래스임을 나타낸다
 public class Posts extends BaseTimeEntity {

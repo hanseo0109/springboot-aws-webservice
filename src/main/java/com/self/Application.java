@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class Application {
     public static void main(String[] args) {
         // 내부 WAS 실행 역할
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args); 
     }
 }
 
