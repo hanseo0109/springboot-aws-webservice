@@ -49,4 +49,7 @@ dependencies {
     implementation('com.h2database:h2')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // `머스테치` 화면 템플릿 엔진 사용
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
 }
