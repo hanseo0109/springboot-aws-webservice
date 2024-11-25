@@ -8,6 +8,7 @@ src/main/java/com/self/web/HelloController.java
 src/main/java/com/self/web/dto/HelloResponseDto.java
 src/test/java/com/self/web/HelloControllerTest.java
 src/test/java/com/self/web/dto/HelloResponseDtoTest.java
+Project_Default.xml
 
 ## git fetch test ##
 HELP.md
@@ -202,3 +203,4 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+Project_Default.xml
