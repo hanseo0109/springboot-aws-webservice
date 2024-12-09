@@ -1,3 +1,6 @@
+# Security settings file
+application-oauth.properties
+
 ## user ignore file ##
 .idea/compiler.xml
 .idea/git_toolbox_blame.xml

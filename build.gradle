@@ -1,4 +1,3 @@
-
 buildscript{
     //  전역변수 설정 영역
     ext {
@@ -52,4 +51,7 @@ dependencies {
 
     // `머스테치` 화면 템플릿 엔진 사용
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    // 소셜 로그인을 위한 spring security 추가
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 }
