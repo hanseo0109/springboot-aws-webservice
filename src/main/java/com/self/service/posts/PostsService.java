@@ -19,6 +19,29 @@ public class PostsService {
     // DB 연결 담당
     private final PostsRepository postsRepository;
 
+    /**
+     * ( readOnly = true ) 설명
+     * ㄴ 트랜잭션 범위 유지 및 조회 속도 개선
+     * ㄴ 등록, 수정, 삭제 기능이 전혀 없는 메서드에 사용
+     *
+     * PostsListResponseDto::new 설명
+     * ㄴ postsRepository 결과로 넘어온 Posts의 Streamdㅡㄹ map을 통해 PostsListResponseDto 변환 -> List로 변환하는 메서드
+     */
+    @Transactional( readOnly = true)
+    public List<PostsListResponseDto> findAllDesc(){
+        return (List<PostsListResponseDto>) postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());      // List로 반환
+    }
+
+    public PostsResponseDto findById( Long id ){
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalArgumentException( "id = " + id + " 게시글이 없습니다.")
+                );
+        return new PostsResponseDto(posts);
+    }
+
     @Transactional
     public Long save(PostsSaveRequestDto postsSaveRequestDto) {
         return postsRepository.save(postsSaveRequestDto.toEntity()).getId();
@@ -44,26 +67,16 @@ public class PostsService {
         return id;
     }
 
-    public PostsResponseDto findById( Long id ){
-        Posts posts = postsRepository.findById(id)
-                .orElseThrow(
-                        () -> new IllegalArgumentException( "id = " + id + " 게시글이 없습니다.")
-                );
-        return new PostsResponseDto(posts);
-    }
-
     /**
-     * ( readOnly = true ) 설명
-     * ㄴ 트랜잭션 범위 유지 및 조회 속도 개선
-     * ㄴ 등록, 수정, 삭제 기능이 전혀 없는 메서드에 사용
+     * JpaRepository에서 지원되는 delete 메서드 활용
+     * 엔티티를 파라미터로 삭제할 수도 있고, deleteById 메서드를 이용하면 id로 삭제할수도 있음
      *
-     * PostsListResponseDto::new 설명
-     * ㄴ postsRepository 결과로 넘어온 Posts의 Streamdㅡㄹ map을 통해 PostsListResponseDto 변환 -> List로 변환하는 메서드
      */
-    @Transactional( readOnly = true)
-    public List<PostsListResponseDto> findAllDesc(){
-        return (List<PostsListResponseDto>) postsRepository.findAllDesc().stream()
-                .map(PostsListResponseDto::new)
-                .collect(Collectors.toList());      // List로 반환
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
+
+        postsRepository.delete(posts);
     }
 }
