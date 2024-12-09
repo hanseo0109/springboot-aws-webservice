@@ -15,11 +15,6 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
-    @GetMapping("/posts/{id}")
-    public PostsResponseDto findById(@PathVariable Long id){
-        return postsService.findById(id);
-    }
-
     @PostMapping("/posts")
     public Long save(@RequestBody PostsSaveRequestDto postsSaveRequestDto) {
         return postsService.save(postsSaveRequestDto);
@@ -33,9 +28,8 @@ public class PostsApiController {
         return postsService.update(id, postsUpdateRequestDto);
     }
 
-    @DeleteMapping("/posts/{id}")
-    public Long delete(@PathVariable Long id) {
-        postsService.delete(id);
-        return id;
+    @GetMapping("/posts/{id}")
+    public PostsResponseDto findById(@PathVariable Long id){
+        return postsService.findById(id);
     }
 }

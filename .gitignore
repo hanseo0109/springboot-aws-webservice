@@ -1,6 +1,3 @@
-# Security settings file
-application-oauth.properties
-
 ## user ignore file ##
 .idea/compiler.xml
 .idea/git_toolbox_blame.xml
@@ -207,3 +204,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 Project_Default.xml
+/.idea/dataSources.xml
+/.idea/encodings.xml
